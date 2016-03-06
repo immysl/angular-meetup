@@ -1,0 +1,35 @@
+{
+  "name": "angular-meetup",
+  "version": "0.0.1",
+  "description": "An example Angular 2 app for learning",
+  "main": "index.js",
+  "scripts": {
+    "start": "concurrently \"npm run tsc:w\" \"npm run lite\" ",
+    "tsc": "tsc",
+    "tsc:w": "tsc -w",
+    "lite": "lite-server",
+    "typings": "typings",
+    "postinstall": "typings install"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/immysl/angular-meetup.git"
+  },
+  "keywords": [
+    "angular",
+    "meetup",
+    "techtalk"
+  ],
+  "author": "Ahamed Imran",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/immysl/angular-meetup/issues"
+  },
+  "homepage": "https://github.com/immysl/angular-meetup#readme",
+  "dependencies": {
+    "angular2": "^2.0.0-beta.8"
+  },
+  "devDependencies": {
+    "lite-server": "^2.1.0"
+  }
+}
