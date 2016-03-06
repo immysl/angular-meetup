@@ -25,6 +25,6 @@ import Session from './session';
 })
 
 export class SessionDetailsComponent {
-  
+  session: Session;  
 }
 
