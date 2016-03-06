@@ -4,10 +4,10 @@
   "description": "An example Angular 2 app for learning",
   "main": "index.js",
   "scripts": {
-    "start": "concurrently \"npm run tsc:w\" \"npm run lite\" ",
+    "start": "concurrently \"npm run tsc:w\" \"npm run nano-server\" ",
     "tsc": "tsc",
     "tsc:w": "tsc -w",
-    "lite": "lite-server",
+    "nano-server": "nano-server",
     "typings": "typings",
     "postinstall": "typings install"
   },
@@ -37,8 +37,8 @@
   },
   "devDependencies": {
     "concurrently": "^2.0.0",
-    "lite-server": "^2.1.0",
+    "nano-server": "^0.5.3",
     "typescript": "^1.8.2",
-    "typings":"^0.6.8"
+    "typings": "^0.6.8"
   }
 }
