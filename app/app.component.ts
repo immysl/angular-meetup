@@ -1,6 +1,6 @@
 import {Component} from 'angular2/core';
-import Session from './session/session';
-import SessionDetailsComponent from './session/session-details.component';
+import {Session} from './session/session';
+import {SessionDetailsComponent} from './session/session-details.component';
 
 @Component({
   selector: 'meetup-app',

@@ -1,5 +1,5 @@
 import {Component} from 'angular2/core';
-import Session from './session';
+import {Session} from './session';
 
 @Component({
   selector: 'session-details',
@@ -25,6 +25,5 @@ import Session from './session';
 })
 
 export class SessionDetailsComponent {
-  session: Session;  
+  session: Session;
 }
-
