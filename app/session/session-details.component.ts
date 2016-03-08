@@ -4,7 +4,7 @@ import {Session} from './session';
 @Component({
   selector: 'session-details',
   template: `
-  <article ngIf="session">
+  <article *ngIf="session">
     <h2>{{session.name}} Details</h2>
     <div><label>ID: </label>{{session.id}}</div>
     <div>
