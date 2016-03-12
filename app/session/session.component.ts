@@ -1,10 +1,7 @@
 import {Component, OnInit, provide} from 'angular2/core';
-import {HTTP_PROVIDERS, XHRBackend} from 'angular2/http';
 import {Session} from './session';
+import {SessionService} from './session.service';
 import {SessionDetailsComponent} from './session-details.component';
-
-import {InMemoryBackendService, SEED_DATA} from 'a2-in-memory-web-api/core';
-import {SessionData} from './session.data';
 
 @Component({
   selector: 'sessions',
@@ -19,16 +16,7 @@ import {SessionData} from './session.data';
     </ul>
     <session-details [session]="selectedSession"></session-details>
   `,
-  directives: [SessionDetailsComponent],
-  providers: [
-    HTTP_PROVIDERS,
-    provide(XHRBackend, {
-      useClass: InMemoryBackendService
-    }),
-    provide(SEED_DATA, {
-      useClass: SessionData
-    })
-  ]
+  directives: [SessionDetailsComponent]
 })
 
 export class SessionComponent {

@@ -1,5 +1,9 @@
-import {Component} from 'angular2/core';
+import {Component, provide} from 'angular2/core';
+import {HTTP_PROVIDERS, XHRBackend} from 'angular2/http';
 import {RouteConfig, ROUTER_DIRECTIVES, ROUTER_PROVIDERS} from 'angular2/router';
+
+import {InMemoryBackendService, SEED_DATA} from 'a2-in-memory-web-api/core';
+import {SessionData} from './session/session.data';
 
 import {SessionService} from './session/session.service';
 import {SessionComponent} from './session/session.component';
@@ -23,7 +27,14 @@ import {DashboardComponent} from './dashboard/dashboard.component';
   `,
   directives: [ROUTER_DIRECTIVES],
   providers: [
+    HTTP_PROVIDERS,
     ROUTER_PROVIDERS,
+    provide(XHRBackend, {
+      useClass: InMemoryBackendService
+    }),
+    provide(SEED_DATA, {
+      useClass: SessionData
+    }),
     SessionService
   ]
 })
