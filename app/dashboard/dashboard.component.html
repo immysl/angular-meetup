@@ -1,0 +1,6 @@
+<h3>Session List</h3>
+<section>
+  <article *ngFor="#session of sessions" (click)="gotoDetails(session)">
+    <h4>{{session.title}}</h4>
+  </article>
+</section>
