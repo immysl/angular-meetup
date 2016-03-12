@@ -46,7 +46,10 @@ export class AppComponent {
   }
 
   getSessions() {
-    this._sessionService.getSessions().then(sessions => this.sessions = sessions);
+    this._sessionService.getSessions()
+                        .subscribe(
+                          sessions => this.sessions = sessions,
+                          error => this.errorMessage = 'Session data not retrieved.');
   }
 
   ngOnInit() {
