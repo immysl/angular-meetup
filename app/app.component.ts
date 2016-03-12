@@ -9,7 +9,16 @@ import {DashboardComponent} from './dashboard/dashboard.component';
   selector: 'meetup-app',
   template: `
     <h1>{{title}}</h1>
-    <a [routerLink]="['Sessions']">Sessions</a>
+    <nav>
+      <ul>
+        <li>
+          <a [routerLink]="['Dashboard']">Dashboard</a>
+        </li>
+        <li>
+          <a [routerLink]="['Sessions']">Sessions</a>
+        </li>
+      </ul>
+    </nav>
     <router-outlet></router-outlet>
   `,
   directives: [ROUTER_DIRECTIVES],
