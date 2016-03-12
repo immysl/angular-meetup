@@ -1,58 +1,19 @@
-import {Component, OnInit, provide} from 'angular2/core';
-import {HTTP_PROVIDERS, XHRBackend} from 'angular2/http';
-import {Session} from './session/session';
-import {SessionDetailsComponent} from './session/session-details.component';
+import {Component} from 'angular2/core';
 import {SessionService} from './session/session.service';
-
-import {InMemoryBackendService, SEED_DATA} from 'a2-in-memory-web-api/core';
-import {SessionData} from './session/session.data';
+import {SessionComponent} from './session/session.component';
 
 @Component({
-  selector: 'meetup-app',
+  selector: 'app',
   template: `
     <h1>{{title}}</h1>
-    <h2>Sessions</h2>
-    <ul>
-      <li *ngFor="#session of sessions"
-          [class.selected]="session === selectedSession"
-          (click)="onSelect(session)">
-          <span>{{session.id}}</span> {{session.title}}
-      </li>
-    </ul>
-    <session-details [session]="selectedSession"></session-details>
+    <sessions></sessions>
   `,
-  directives: [SessionDetailsComponent],
+  directives: [SessionComponent],
   providers: [
-    HTTP_PROVIDERS,
-    SessionService,
-    provide(XHRBackend, {
-      useClass: InMemoryBackendService
-    }),
-    provide(SEED_DATA, {
-      useClass: SessionData
-    })
+    SessionService
   ]
 })
 
 export class AppComponent {
   title = 'Angular Meetup';
-  selectedSession: Session;
-  sessions: Session[];
-
-  constructor(private _sessionService: SessionService) {}
-
-  onSelect(session: Session) {
-    this.selectedSession = session;
-  }
-
-  getSessions() {
-    this._sessionService.getSessions()
-                        .subscribe(
-                          sessions => this.sessions = sessions,
-                          error => this.errorMessage = 'Session data not retrieved.');
-  }
-
-  ngOnInit() {
-    this.getSessions();
-  }
 }
