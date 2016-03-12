@@ -1,16 +1,15 @@
 import {Component, OnInit, provide} from 'angular2/core';
 import {HTTP_PROVIDERS, XHRBackend} from 'angular2/http';
-import {Session} from './session/session';
-import {SessionDetailsComponent} from './session/session-details.component';
+import {Session} from './session';
+import {SessionDetailsComponent} from './session-details.component';
 
 import {InMemoryBackendService, SEED_DATA} from 'a2-in-memory-web-api/core';
-import {SessionData} from './session/session.data';
+import {SessionData} from './session.data';
 
 @Component({
   selector: 'sessions',
   template: `
-    <h1>{{title}}</h1>
-    <h2>Sessions</h2>
+    <h3>Session List</h3>
     <ul>
       <li *ngFor="#session of sessions"
           [class.selected]="session === selectedSession"
@@ -33,7 +32,6 @@ import {SessionData} from './session/session.data';
 })
 
 export class SessionComponent {
-  title = 'Session List';
   selectedSession: Session;
   sessions: Session[];
 
