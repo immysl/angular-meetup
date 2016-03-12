@@ -1,6 +1,11 @@
-import {Component} from 'angular2/core';
+import {Component, OnInit, provide} from 'angular2/core';
+import {HTTP_PROVIDERS, XHRBackend} from 'angular2/http';
 import {Session} from './session/session';
 import {SessionDetailsComponent} from './session/session-details.component';
+import {SessionService} from './session/session.service';
+
+import {InMemoryBackendService, SEED_DATA} from 'a2-in-memory-web-api/core';
+import {SessionData} from './session/session.data';
 
 @Component({
   selector: 'meetup-app',
@@ -16,14 +21,35 @@ import {SessionDetailsComponent} from './session/session-details.component';
     </ul>
     <session-details [session]="selectedSession"></session-details>
   `,
-  directives: [SessionDetailsComponent]
+  directives: [SessionDetailsComponent],
+  providers: [
+    HTTP_PROVIDERS,
+    SessionService,
+    provide(XHRBackend, {
+      useClass: InMemoryBackendService
+    }),
+    provide(SEED_DATA, {
+      useClass: SessionData
+    })
+  ]
 })
 
 export class AppComponent {
   title = 'Angular Meetup';
   selectedSession: Session;
+  sessions: Session[];
+
+  constructor(private _sessionService: SessionService) {}
 
   onSelect(session: Session) {
     this.selectedSession = session;
+  }
+
+  getSessions() {
+    this._sessionService.getSessions().then(sessions => this.sessions = sessions);
+  }
+
+  ngOnInit() {
+    this.getSessions();
   }
 }
