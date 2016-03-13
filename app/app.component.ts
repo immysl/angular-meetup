@@ -6,7 +6,9 @@ import {InMemoryBackendService, SEED_DATA} from 'a2-in-memory-web-api/core';
 import {SessionData} from './session/session.data';
 
 import {SessionService} from './session/session.service';
+
 import {SessionComponent} from './session/session.component';
+import {SessionDetailsComponent} from './session/session-details.component';
 import {DashboardComponent} from './dashboard/dashboard.component';
 
 @Component({
@@ -44,6 +46,11 @@ import {DashboardComponent} from './dashboard/dashboard.component';
     path: '/sessions',
     name: 'Sessions',
     component: SessionComponent
+  },
+  {
+    path: '/details/:id',
+    name: 'SessionDetails',
+    component: SessionDetailsComponent
   },
   {
     path: '/dashboard',
