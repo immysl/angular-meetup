@@ -6,7 +6,7 @@ import {SessionService} from './session.service';
 
 @Component({
   selector: 'session-details',
-  template: 'app/session/session-details.component.html',
+  templateUrl: 'app/session/session-details.component.html',
   inputs: ['session']
 })
 
