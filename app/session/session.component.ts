@@ -14,7 +14,10 @@ import {SessionDetailsComponent} from './session-details.component';
           <span>{{session.id}}</span> {{session.title}}
       </li>
     </ul>
-    <session-details [session]="selectedSession"></session-details>
+    <div *ngIf="selectedSession">
+      <h2>{{selectedSession.title | uppercase}}</h2>
+      <button (click)="gotoDetails()">View Details</button>
+    </div>
   `,
   directives: [SessionDetailsComponent]
 })
