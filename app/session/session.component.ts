@@ -5,20 +5,7 @@ import {SessionDetailsComponent} from './session-details.component';
 
 @Component({
   selector: 'sessions',
-  template: `
-    <h3>Session List</h3>
-    <ul>
-      <li *ngFor="#session of sessions"
-          [class.selected]="session === selectedSession"
-          (click)="onSelect(session)">
-          <span>{{session.id}}</span> {{session.title}}
-      </li>
-    </ul>
-    <div *ngIf="selectedSession">
-      <h2>{{selectedSession.title | uppercase}}</h2>
-      <button (click)="gotoDetails()">View Details</button>
-    </div>
-  `,
+  templateUrl: 'app/session/session.component.html',
   directives: [SessionDetailsComponent]
 })
 
