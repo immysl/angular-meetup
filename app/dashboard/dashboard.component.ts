@@ -1,4 +1,5 @@
 import {Component, OnInit} from 'angular2/core';
+import {Router} from 'angular2/router';
 
 import {Session} from '../session/session';
 import {SessionService} from '../session/session.service';
@@ -11,12 +12,20 @@ import {SessionService} from '../session/session.service';
 export class DashboardComponent implements OnInit {
   session: Session[];
 
-  constructor(private _sessionService: SessionService) {}
+  constructor(
+    private _router: Router,
+    private _sessionService: SessionService) {}
 
   ngOnInit() {
     this._sessionService.getSessions()
-                        .subscribe(sessions => this.sessions = sessions.slice(1,5));
+                        .subscribe(sessions => this.sessions = sessions);
   }
 
-  gotoDetails() {}
+  gotoDetails(session: Session) {
+    let link = ['SessionDetails', {
+      id: session.id
+    }];
+
+    this._router.navigate(link);
+  }
 }
