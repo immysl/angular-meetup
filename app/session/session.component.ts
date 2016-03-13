@@ -1,4 +1,6 @@
 import {Component, OnInit, provide} from 'angular2/core';
+import {Router} from 'angular2/router';
+
 import {Session} from './session';
 import {SessionService} from './session.service';
 import {SessionDetailsComponent} from './session-details.component';
@@ -13,7 +15,9 @@ export class SessionComponent {
   selectedSession: Session;
   sessions: Session[];
 
-  constructor(private _sessionService: SessionService) {}
+  constructor(
+    private _router: Router,
+    private _sessionService: SessionService) {}
 
   onSelect(session: Session) {
     this.selectedSession = session;
@@ -24,6 +28,12 @@ export class SessionComponent {
                         .subscribe(
                           sessions => this.sessions = sessions,
                           error => this.errorMessage = 'Session data not retrieved.');
+  }
+
+  gotoDetails() {
+    this._router.navigate(['SessionDetails', {
+      id: this.selectedSession.id
+    }]);
   }
 
   ngOnInit() {
